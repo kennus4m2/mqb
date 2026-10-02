@@ -8,7 +8,7 @@ def game_info():
     return {
         "slug": "monster-quiz-battle",
         "name": "Monster Quiz Battle",
-        "team": "Team ______ (BSCS 3-_)",  # TODO: your team name and section
+        "team": "Team 5 (BSCS 3-1)",  # TODO: your team name and section
         "description": "Answer questions to damage the monster, open mystery chests, "
                        "and deal the most damage before time runs out.",
         "min_players": 1,
