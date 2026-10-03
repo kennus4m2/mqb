@@ -1,6 +1,6 @@
 fastapi
 uvicorn
-pymysql
+psycopg[binary]
 python-dotenv
 PyJWT
 bcrypt

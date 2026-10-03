@@ -5,8 +5,6 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 
 
 class AppError(Exception):
-    """Raise this anywhere to send a Hub Contract error response."""
-
     def __init__(self, status: int, code: str, message: str):
         self.status = status
         self.code = code
@@ -27,7 +25,6 @@ def register_error_handlers(app: FastAPI) -> None:
 
     @app.exception_handler(RequestValidationError)
     async def handle_validation(request: Request, exc: RequestValidationError):
-        # FastAPI's default is 422; the contract requires 400 VALIDATION_FAILED
         return error_response(400, "VALIDATION_FAILED", "The input is missing or wrong.")
 
     @app.exception_handler(StarletteHTTPException)
@@ -38,5 +35,4 @@ def register_error_handlers(app: FastAPI) -> None:
 
     @app.exception_handler(Exception)
     async def handle_unexpected(request: Request, exc: Exception):
-        # Never show stack traces or SQL errors to the client
         return error_response(500, "SERVER_ERROR", "Something went wrong on the server.")
